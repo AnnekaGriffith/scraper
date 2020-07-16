@@ -1,0 +1,30 @@
+import re
+import urllib.request
+def profile(*arg):
+    name1 = re.compile('<h1 class="heading-title pull-left">\s+(.*)\s+(.*)\s+(.*)\s+<\/h1>')
+    name1 = re.findall(name1, html)
+    rInterests1 = re.compile('<h3\s+class="panel-title">Research Interests<\/h3>\s+<\/div>\s+<div class="panel-body"><p>(.*)<\/p><\/div>')
+    rInterests1 = re.findall(rInterests1, html)
+    Homepage1 = re.compile('<h3><a\s+target="_blank"\s+href="(.*)">Homepage<\/a><\/h3>')
+    Homepage1 = re.findall(Homepage1, html)
+    education1 = re.compile('<h3\s+class="panel-title">Education<\/h3>\s+<\/div>\s+<div class="panel-body"><p>(.*)<\/p><\/div>')
+    education1 = re.findall(education1, html)
+    email1 = re.compile('email\s+(.*@txstate.edu)')
+    email1 = re.findall(email1, html)
+
+    file.write ("Name: {}".format(name1))
+    file.write ("\nEducation: {}".format(education1))
+    file.write ("\nResearch interests: {}".format(rInterests1))
+    file.write ("\nEmail: {}".format(email1))
+    file.write ("\nWebpage: {}".format(Homepage1))
+    file.close() 
+    
+html = urllib.request.urlopen("https://cs.txstate.edu/accounts/profiles/ma04/").read().decode('utf-8')
+file= open("MoonisAli.txt","w+")
+profile(html)
+html = urllib.request.urlopen("https://cs.txstate.edu/accounts/profiles/mb92/").read().decode('utf-8')
+file= open("MartinBurtscher.txt","w+")
+profile(html)
+html = urllib.request.urlopen("https://cs.txstate.edu/accounts/profiles/xc10/").read().decode('utf-8')
+file= open("XiaoChen.txt","w+")
+profile(html)
